@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Corona Data Report</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+   <div class="container">
+       {% if data %}
+         <table class="table table-striped table-hover table-bordered table-dark">
+            <thead>
+               <tr>
+                   <th>country_name</th>
+                   <th>cases</th>
+                   <th>deaths</th>
+                   <th>total_recovered</th>
+                   <th>new_deaths</th>
+                   <th>new_cases</th>
+                   <th>serious_critical</th>
+                   <th>active_cases</th>
+               </tr>
+            </thead>
+         {% for object in object_list %}
+            <tbody>
+                <tr>
+                    <td>{{ object.country_name }}</td>
+                    <td>{{ object.cases }}</td>
+                    <td>{{ object.deaths }}</td>
+                    <td>{{ object.total_recovered }}</td>
+                    <td>{{ object.new_deaths }}</td>
+                    <td>{{ object.new_cases }}</td>
+                    <td>{{ object.serious_critical }}</td>
+                    <td>{{ object.active_cases }}</td>
+                </tr>
+            </tbody>
+         {% endfor %}
+         </table>
+       {% else %}
+          <h2>{{ error }}</h2>
+       {% endif %}
+   </div>
+</body>
+</html>
